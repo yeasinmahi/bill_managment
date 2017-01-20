@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BillManagment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_data_data_">/data/data/</string>
+
+    <string name="late">Do you payment late?</string>
+    <string-array name="bool">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+</resources>

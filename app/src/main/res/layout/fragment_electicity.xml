@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="Electricity"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="35sp" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/serialNoEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Serial No" />
+            <EditText
+                android:id="@+id/meterNoEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Meter No" />
+            <EditText
+                android:id="@+id/amountEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Amount" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/billingMonthEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Billing Month"
+                    android:layout_weight="2"
+                    />
+                <Button
+                    android:id="@+id/billingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Date"
+                    android:tag="eBill"
+                    android:onClick="datePicker"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/paymentDateEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Payment Date"
+                    android:layout_weight="2"
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Date"
+                    android:tag="ePay"
+                    android:id="@+id/paymentDate"
+                    android:onClick="datePicker"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/isLate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/late"
+                android:spinnerMode="dropdown"/>
+
+            <EditText
+                android:id="@+id/fineAmountEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fine Amount"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp">
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Save"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
