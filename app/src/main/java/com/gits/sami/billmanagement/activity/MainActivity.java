@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_electricity) {
+        /*if (id == R.id.nav_electricity) {
             moveToFragment(new ElectricityFragment());
         } else if (id == R.id.nav_wasa) {
             moveToFragment(new WasaFragment());
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         } else if (id == R.id.nav_reports) {
 
-        } else if (id == R.id.nav_setting) {
+        } else*/ if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_about) {
 
