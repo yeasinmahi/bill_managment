@@ -21,6 +21,11 @@ public class Utility {
     }
     public enum dateEnum{
         ElectricityBillingDate,
-        ElectricityPaymentDate
+        ElectricityPaymentDate,
+        ReportDate
+    }
+    public enum isFullDateEnum{
+        TRUE,
+        FALSE
     }
 }

@@ -28,7 +28,9 @@ import com.gits.sami.billmanagement.fragments.ElectricityFragment;
 import com.gits.sami.billmanagement.fragments.GasFragment;
 import com.gits.sami.billmanagement.fragments.ReportsFragment;
 import com.gits.sami.billmanagement.fragments.WasaFragment;
+import com.gits.sami.billmanagement.others.Utility;
 import com.gits.sami.billmanagement.others.Utility.dateEnum;
+import com.gits.sami.billmanagement.others.Utility.isFullDateEnum;
 import com.gits.sami.billmanagement.others.ViewPagerAdapter;
 
 import java.text.DateFormat;
@@ -36,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import static com.gits.sami.billmanagement.others.Utility.isFullDateEnum.*;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, NavigationView.OnNavigationItemSelectedListener{
 
@@ -86,15 +90,22 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         viewPager.setAdapter(adapter);
     }
     dateEnum bill;
+    isFullDateEnum isFullDateEnum= TRUE;
     public void datePicker(View view){
         switch (view.getId()){
             case R.id.billingDate: bill = dateEnum.ElectricityBillingDate;
+                isFullDateEnum = FALSE;
                 break;
             case R.id.paymentDate: bill = dateEnum.ElectricityPaymentDate;
+                isFullDateEnum = TRUE;
+                break;
+            case R.id.reportMonth: bill = dateEnum.ReportDate;
+                isFullDateEnum = TRUE;
                 break;
 
+
         }
-        DatePickerFragment fragment = new DatePickerFragment();
+        DatePickerFragment fragment = new DatePickerFragment(isFullDateEnum);
         fragment.show(getSupportFragmentManager(),"date");
     }
 
@@ -105,14 +116,25 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 break;
             case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(dateFormat.format(calender.getTime()));
                 break;
+            case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(dateFormat.format(calender.getTime()));
+                break;
 
         }
 
     }
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        Calendar calendar;
+        if (isFullDateEnum.equals(TRUE)){
+            calendar = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+        }
+        else{
+            calendar = Calendar.getInstance();
+            calendar.clear();
+            calendar.set(Calendar.MONTH, monthOfYear);
+            calendar.set(Calendar.YEAR, year);
+        }
 
-        Calendar calendar = new GregorianCalendar(year, monthOfYear, dayOfMonth);
         setDate(calendar);
     }
 

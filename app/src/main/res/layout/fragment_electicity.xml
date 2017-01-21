@@ -9,10 +9,11 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="15dp"
+        android:background="@color/headerBackground"
         android:text="Electricity"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="@dimen/body_header_text_Size" />
 
     <ScrollView
         android:layout_width="fill_parent"

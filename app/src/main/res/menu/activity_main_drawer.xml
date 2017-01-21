@@ -16,7 +16,7 @@
             android:title="Gas" />
         <item
             android:id="@+id/nav_reports"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_share"
             android:title="Reports" />
     </group>-->
 
@@ -24,7 +24,7 @@
         <menu>
             <item
                 android:id="@+id/nav_setting"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_manage"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_about"
