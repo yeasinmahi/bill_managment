@@ -1,7 +1,11 @@
 package com.gits.sami.billmanagement.fragments;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,49 +54,57 @@ public class ReportsFragment extends Fragment {
     private void populateReportTable() {
         TableRow tr = new TableRow(getContext());
         tr.setLayoutParams(new TableLayout.LayoutParams(
-                TableLayout.LayoutParams.FILL_PARENT,
-                TableLayout.LayoutParams.FILL_PARENT));
-        tr.setPadding(10,10,30,10);
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.MATCH_PARENT));
+        //tr.setPadding(10,10,10,10);
 
-        tr.addView(getTextView("Serial No"));
-        tr.addView(getTextView("Meter No"));
-        tr.addView(getTextView("Amount"));
-        tr.addView(getTextView("Billing Month"));
-        tr.addView(getTextView("Payment Date"));
-        tr.addView(getTextView("Fine Amount"));
+        tr.addView(getTextView("Serial No",true));
+        tr.addView(getTextView("Meter No",true));
+        tr.addView(getTextView("Amount",true));
+        tr.addView(getTextView("Billing Month",true));
+        tr.addView(getTextView("Payment Date",true));
+        tr.addView(getTextView("Fine Amount",true));
 
-        tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.FILL_PARENT));
+        tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
 
     }
     private void createReportTable(ArrayList<Electricity> content) {
         populateReportTable();
         for (Electricity electricity : content) {
             TableRow tr = getARow(electricity);
-            tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.FILL_PARENT));
+            tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
         }
     }
     private TableRow getARow(Electricity electricity) {
-
         TableRow tr = new TableRow(getContext());
         tr.setLayoutParams(new TableLayout.LayoutParams(
-                TableLayout.LayoutParams.FILL_PARENT,
-                TableLayout.LayoutParams.FILL_PARENT));
-        tr.setPadding(10,10,10,10);
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.MATCH_PARENT));
+        //tr.setPadding(10,10,10,10);
 
-        tr.addView(getTextView(electricity.serialNo));
-        tr.addView(getTextView(electricity.meterNo));
-        tr.addView(getTextView((String.valueOf(electricity.amount))));
-        tr.addView(getTextView((Utility.getHalfDateAsString(electricity.billingMonth))));
-        tr.addView(getTextView((Utility.getFullDateAsString(electricity.paymentDate))));
-        tr.addView(getTextView((String.valueOf(electricity.fineAmount))));
 
+        tr.addView(getTextView(electricity.serialNo,false));
+        tr.addView(getTextView(electricity.meterNo,false));
+        tr.addView(getTextView(String.valueOf(electricity.amount),false));
+        tr.addView(getTextView((Utility.getHalfDateAsString(electricity.billingMonth)),false));
+        tr.addView(getTextView((Utility.getFullDateAsString(electricity.paymentDate)),false));
+        tr.addView(getTextView((String.valueOf(electricity.fineAmount)),false));
         return tr;
     }
 
-    private TextView getTextView(String value) {
+    private TextView getTextView(String value,boolean head) {
         TextView tvName = new TextView(getContext());
         tvName.setPadding(10, 10, 10, 10);
         tvName.setText(value);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (head){
+                tvName.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.cell_head_shape));
+                tvName.setTextColor(Color.WHITE);
+            }
+            else {
+                tvName.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.cell_shape));
+            }
+        }
         return tvName;
     }
 }
