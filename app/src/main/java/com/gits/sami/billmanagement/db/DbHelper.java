@@ -33,8 +33,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	public ArrayList<Electricity> getAllElecticity() {
-		ArrayList<Electricity> electicities = new ArrayList<Electricity>();
+	public ArrayList<Electricity> getAllElectricity() {
+		ArrayList<Electricity> electricities = new ArrayList<Electricity>();
 		// Rest Index Of Spinner from database
 		SQLiteDatabase db = getReadableDatabase();
 		Cursor cursor = db.query("electricity", null, null, null, null, null, null);
@@ -49,14 +49,14 @@ public class DbHelper extends SQLiteOpenHelper {
 				electricity.paymentDate = Utility.getDate(cursor.getString(cursor.getColumnIndex("paymentDate")));
 				electricity.isLate = Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex("isLate")));
 				electricity.fineAmount = Double.parseDouble(cursor.getString(cursor.getColumnIndex("fineAmount")));
-				electicities.add(electricity);
+				electricities.add(electricity);
 			}
 		}
 		if (cursor != null) {
 			cursor.close();
 		}
 		db.close();
-		return electicities;
+		return electricities;
 	}
 	public boolean insertElectricity(Electricity electricity) {
 		ContentValues contentValues = new ContentValues();
@@ -71,43 +71,5 @@ public class DbHelper extends SQLiteOpenHelper {
 		db.close();
 		return row>0;
 	}
-
-
-	/*
-	 * public long insertStudent(Student student){ SQLiteDatabase db=
-	 * this.getWritableDatabase(); ContentValues values= new ContentValues();
-	 * values.put(nameField, student.getName()); values.put(emailField,
-	 * student.getEmail()); values.put(phoneField, student.getPhone()); long
-	 * inserted=db.insert(tableName, null, values); db.close(); return inserted;
-	 * } public ArrayList<Student> getAllStudent(){ ArrayList<Student> students
-	 * = new ArrayList<Student>(); SQLiteDatabase db=
-	 * this.getReadableDatabase(); Cursor cursor = db.query(tableName, null,
-	 * null, null, null, null, null); if(cursor!=null && cursor.getCount()>0){
-	 * cursor.moveToFirst(); for (int i = 0; i < cursor.getCount(); i++) { int
-	 * id = cursor.getInt(cursor.getColumnIndex(idField)); String name=
-	 * cursor.getString(cursor.getColumnIndex(nameField)); String email=
-	 * cursor.getString(cursor.getColumnIndex(emailField)); String phone=
-	 * cursor.getString(cursor.getColumnIndex(phoneField)); Student student =
-	 * new Student(id, name, email, phone); students.add(student);
-	 * cursor.moveToNext(); } } cursor.close(); return students; } public
-	 * ArrayList<Student> searchByName(String name){ ArrayList<Student> students
-	 * = new ArrayList<Student>(); SQLiteDatabase db= getReadableDatabase();
-	 * Cursor cursor = db.query(tableName, null, " name like '%"+name+"%'",
-	 * null, null, null, null); if(cursor!=null && cursor.getCount()>0){
-	 * cursor.moveToFirst(); for (int i = 0; i < cursor.getCount(); i++) { int
-	 * id = cursor.getInt(cursor.getColumnIndex(idField)); String name1=
-	 * cursor.getString(cursor.getColumnIndex(nameField)); String email=
-	 * cursor.getString(cursor.getColumnIndex(emailField)); String phone=
-	 * cursor.getString(cursor.getColumnIndex(phoneField)); Student student =
-	 * new Student(id, name1, email, phone); students.add(student);
-	 * cursor.moveToNext(); } } cursor.close(); return students; } public int
-	 * updateName(int id, String newName){ SQLiteDatabase db=
-	 * getWritableDatabase(); ContentValues values= new ContentValues();
-	 * values.put(nameField, newName); int updated = db.update(tableName,
-	 * values, idField+"=?", new String[]{""+id}); return updated; } public int
-	 * delete(int id){ SQLiteDatabase db= getWritableDatabase(); int deleted=
-	 * db.delete(tableName, idField+"=?", new String[]{""+id}); return deleted;
-	 * }
-	 */
 
 }

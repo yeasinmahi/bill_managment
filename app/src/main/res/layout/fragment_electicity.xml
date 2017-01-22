@@ -81,13 +81,26 @@
                     android:onClick="datePicker"
                     android:layout_weight="1"/>
             </LinearLayout>
-
-            <Spinner
-                android:id="@+id/isLate"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/late"
-                android:spinnerMode="dropdown"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Is late payment"
+                    android:layout_weight="2"
+                    />
+                <Spinner
+                    android:id="@+id/isLate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/late"
+                    android:layout_weight="2"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+
+
 
             <EditText
                 android:id="@+id/fineAmountEditText"

@@ -72,8 +72,8 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
 
         // Spinner Drop down elements
         List<String> items = new ArrayList<String>();
-        items.add("True");
         items.add("False");
+        items.add("True");
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, items);
         // Drop down layout style - list view with radio button
@@ -86,7 +86,7 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (id==0)
+        if (id==1)
             fineAmountTextView.setVisibility(View.VISIBLE);
         else
             fineAmountTextView.setVisibility(View.GONE);

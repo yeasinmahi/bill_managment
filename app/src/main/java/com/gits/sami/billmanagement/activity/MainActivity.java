@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 isFullDateEnum = TRUE;
                 break;
             case R.id.reportMonth: bill = dateEnum.ReportDate;
-                isFullDateEnum = TRUE;
+                isFullDateEnum = FALSE;
                 break;
 
 
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void setDate(final Calendar calender){
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         switch (bill){
-            case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(dateFormat.format(calender.getTime()));
+            case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(Utility.getHalfDateAsString(calender.getTime()));
                 break;
-            case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(dateFormat.format(calender.getTime()));
+            case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getFullDateAsString(calender.getTime()));
                 break;
-            case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(dateFormat.format(calender.getTime()));
+            case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getHalfDateAsString(calender.getTime()));
                 break;
 
         }

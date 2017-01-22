@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Utility {
     public static Date getDate(String date){
-        DateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat formater = new SimpleDateFormat("dd-MMM-yyyy");
         try {
             return formater.parse(date);
         } catch (ParseException e) {
@@ -28,4 +28,11 @@ public class Utility {
         TRUE,
         FALSE
     }
+    public static String getFullDateAsString(Date date){
+        return new SimpleDateFormat("dd-MMM-yyyy").format(date);
+    }
+    public static String getHalfDateAsString(Date date){
+        return new SimpleDateFormat("MMM-yyyy").format(date);
+    }
+
 }
