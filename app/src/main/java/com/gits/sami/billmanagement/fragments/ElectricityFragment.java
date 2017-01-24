@@ -20,6 +20,10 @@ import com.gits.sami.billmanagement.others.Utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.gits.sami.billmanagement.others.Utility.getDate;
+import static com.gits.sami.billmanagement.others.Utility.getMyText;
+import static com.gits.sami.billmanagement.others.Utility.isEmpty;
+
 
 public class ElectricityFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -99,44 +103,44 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
 
     private boolean validateElectricity() {
 
-        if (serialNoEditText.getText().toString().trim().equals("")) {
+        if (isEmpty(serialNoEditText)) {
             Toast.makeText(getContext(), "Serial no cannot be blank", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (meterNoEditText.getText().toString().trim().equals("")) {
+        if (isEmpty(meterNoEditText)) {
             Toast.makeText(getContext(), "Meter no cannot be blank", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (amountEditText.getText().toString().trim().equals("")) {
+        if (isEmpty(amountEditText)) {
             Toast.makeText(getContext(), "Amount cannot be blank", Toast.LENGTH_LONG).show();
             return false;
         } else {
             try {
-                Double.parseDouble(amountEditText.getText().toString().trim());
+                Double.parseDouble(getMyText(amountEditText));
             } catch (Exception e) {
                 Toast.makeText(getContext(), "Check amount properly", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
-        if (billingMonthTextView.getText().toString().trim().equals("")) {
+        if (isEmpty(billingMonthTextView)) {
             Toast.makeText(getContext(), "Billing month cannot be blank", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (Utility.getDate(billingMonthTextView.getText().toString(), Utility.myDateFormat.MMM_yyyy).equals(Utility.ErrorDate)) {
+        if (getDate(getMyText(billingMonthTextView), Utility.myDateFormat.MMM_yyyy).equals(Utility.ErrorDate)) {
             Toast.makeText(getContext(), "Billing Date format error", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (paymentMonthTextView.getText().toString().trim().equals("")) {
+        if (isEmpty(paymentMonthTextView)) {
             Toast.makeText(getContext(), "Payment date cannot be blank", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (Utility.getDate(paymentMonthTextView.getText().toString(), Utility.myDateFormat.dd_MMM_yyyy).equals(Utility.ErrorDate)) {
+        if (getDate(getMyText(paymentMonthTextView), Utility.myDateFormat.dd_MMM_yyyy).equals(Utility.ErrorDate)) {
             Toast.makeText(getContext(), "Payment Date format error", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!fineAmountTextView.getText().toString().trim().equals("")) {
+        if (!isEmpty(fineAmountTextView)) {
             try {
-                Double.parseDouble(fineAmountTextView.getText().toString().trim());
+                Double.parseDouble(getMyText(fineAmountTextView));
             } catch (Exception ex) {
                 Toast.makeText(getContext(), "Check fine amount properly", Toast.LENGTH_LONG).show();
                 return false;
@@ -149,12 +153,12 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
         if (validateElectricity()) {
             Bill bill = new Bill();
             bill.billType = Utility.billType.Electricity;
-            bill.serialNo = serialNoEditText.getText().toString().trim();
-            bill.meterNo = meterNoEditText.getText().toString().trim();
-            bill.amount = Double.parseDouble(amountEditText.getText().toString().trim());
-            bill.billingMonth = Utility.getDate(billingMonthTextView.getText().toString(), Utility.myDateFormat.MMM_yyyy);
-            bill.paymentDate = Utility.getDate(paymentMonthTextView.getText().toString(), Utility.myDateFormat.dd_MMM_yyyy);
-            bill.fineAmount = !fineAmountTextView.getText().toString().trim().equals("") ? Double.parseDouble(fineAmountTextView.getText().toString().trim()) : Double.parseDouble("0.0");
+            bill.serialNo = getMyText(serialNoEditText);
+            bill.meterNo = getMyText(meterNoEditText);
+            bill.amount = Double.parseDouble(getMyText(amountEditText));
+            bill.billingMonth = getDate(getMyText(billingMonthTextView), Utility.myDateFormat.MMM_yyyy);
+            bill.paymentDate = getDate(getMyText(paymentMonthTextView), Utility.myDateFormat.dd_MMM_yyyy);
+            bill.fineAmount = !isEmpty(fineAmountTextView) ? Double.parseDouble(getMyText(fineAmountTextView)) : Double.parseDouble("0.0");
             return bill;
         } else {
             return null;

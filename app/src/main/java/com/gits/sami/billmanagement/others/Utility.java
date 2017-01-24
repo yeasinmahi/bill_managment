@@ -1,5 +1,8 @@
 package com.gits.sami.billmanagement.others;
 
+import android.view.View;
+import android.widget.EditText;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -58,5 +61,10 @@ public class Utility {
         Wasa,
         Gas
     }
-
+    public static boolean isEmpty(EditText editText){
+        return editText.getText().toString().trim().equals("");
+    }
+    public static String getMyText(EditText editText){
+        return editText.getText().toString().trim();
+    }
 }

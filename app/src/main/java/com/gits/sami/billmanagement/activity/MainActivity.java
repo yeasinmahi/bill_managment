@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ElectricityFragment(), "Electricity");
@@ -95,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             case R.id.reportMonth: bill = dateEnum.ReportDate;
                 isFullDateEnum = FALSE;
                 break;
-
-
         }
         DatePickerFragment fragment = new DatePickerFragment(isFullDateEnum);
         fragment.show(getSupportFragmentManager(),"date");
@@ -109,10 +106,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
                 break;
             case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.MMM_yyyy));
+                
                 break;
-
         }
-
     }
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -126,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             calendar.set(Calendar.MONTH, monthOfYear);
             calendar.set(Calendar.YEAR, year);
         }
-
         setDate(calendar);
     }
 
@@ -148,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (id == R.id.nav_about) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -167,6 +161,4 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             super.onBackPressed();
         }
     }
-
-
 }
