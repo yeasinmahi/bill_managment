@@ -33,7 +33,13 @@ public class DatePickerFragment extends DialogFragment{
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),(DatePickerDialog.OnDateSetListener)getActivity(),year,month,day);
         if (isFullDate.equals(FALSE)){
-            ((ViewGroup) datePickerDialog.getDatePicker()).findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
+            try{
+                datePickerDialog.getDatePicker().findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
+            }
+            catch (Exception ex){
+
+            }
+
         }
         return datePickerDialog;
     }

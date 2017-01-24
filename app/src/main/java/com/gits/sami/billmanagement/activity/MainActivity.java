@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void setDate(final Calendar calender){
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         switch (bill){
             case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
                 break;
