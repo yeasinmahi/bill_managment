@@ -32,5 +32,7 @@
                 android:title="About Software" />
         </menu>
     </item>
+    <item android:id="@+id/nav_exit"
+        android:title="Exit"></item>
 
 </menu>

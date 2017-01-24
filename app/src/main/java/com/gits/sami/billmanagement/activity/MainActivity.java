@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
                 break;
             case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.MMM_yyyy));
-                
+
                 break;
         }
     }
@@ -142,6 +142,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         } else if (id == R.id.nav_about) {
 
+        }
+        else if(id==R.id.nav_exit) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
