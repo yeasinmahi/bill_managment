@@ -1,5 +1,6 @@
 package com.gits.sami.billmanagement.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**

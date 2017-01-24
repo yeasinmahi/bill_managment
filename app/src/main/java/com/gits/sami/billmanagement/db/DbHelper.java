@@ -45,8 +45,8 @@ public class DbHelper extends SQLiteOpenHelper {
 				electricity.serialNo = cursor.getString(cursor.getColumnIndex("serialNo"));
 				electricity.meterNo = cursor.getString(cursor.getColumnIndex("meterNo"));
 				electricity.amount = Double.parseDouble(cursor.getString(cursor.getColumnIndex("amount")));
-				electricity.billingMonth = Utility.getDate(cursor.getString(cursor.getColumnIndex("billingMonth")));
-				electricity.paymentDate = Utility.getDate(cursor.getString(cursor.getColumnIndex("paymentDate")));
+				electricity.billingMonth = Utility.getDate(cursor.getString(cursor.getColumnIndex("billingMonth")),Utility.myDateFormat.yyyy_MM_dd);
+				electricity.paymentDate = Utility.getDate(cursor.getString(cursor.getColumnIndex("paymentDate")),Utility.myDateFormat.yyyy_MM_dd);
 				electricity.isLate = Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex("isLate")));
 				electricity.fineAmount = Double.parseDouble(cursor.getString(cursor.getColumnIndex("fineAmount")));
 				electricities.add(electricity);
@@ -62,10 +62,10 @@ public class DbHelper extends SQLiteOpenHelper {
 		ContentValues contentValues = new ContentValues();
 		contentValues.put("serialNo",electricity.serialNo);
 		contentValues.put("meterNo",electricity.meterNo);
-		contentValues.put("amount",electricity.amount);
-		contentValues.put("billingMonth", String.valueOf(electricity.billingMonth));
-		contentValues.put("paymentDate", String.valueOf(electricity.paymentDate));
-		contentValues.put("fineAmount",electricity.fineAmount);
+		contentValues.put("amount", (Double) electricity.amount);
+		contentValues.put("billingMonth", Utility.getDateAsString(electricity.billingMonth, Utility.myDateFormat.yyyy_MM_dd));
+		contentValues.put("paymentDate", Utility.getDateAsString(electricity.paymentDate, Utility.myDateFormat.yyyy_MM_dd));
+		contentValues.put("fineAmount", (Double) electricity.fineAmount);
 		SQLiteDatabase db = getReadableDatabase();
 		long row = db.insert("electricity",null,contentValues);
 		db.close();

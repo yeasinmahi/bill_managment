@@ -1,7 +1,6 @@
 package com.gits.sami.billmanagement.fragments;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -86,8 +85,8 @@ public class ReportsFragment extends Fragment {
         tr.addView(getTextView(electricity.serialNo,false));
         tr.addView(getTextView(electricity.meterNo,false));
         tr.addView(getTextView(String.valueOf(electricity.amount),false));
-        tr.addView(getTextView((Utility.getHalfDateAsString(electricity.billingMonth)),false));
-        tr.addView(getTextView((Utility.getFullDateAsString(electricity.paymentDate)),false));
+        tr.addView(getTextView(Utility.getDateAsString(electricity.billingMonth,Utility.myDateFormat.MMM_yyyy),false));
+        tr.addView(getTextView(Utility.getDateAsString(electricity.paymentDate,Utility.myDateFormat.dd_MMM_yyyy),false));
         tr.addView(getTextView((String.valueOf(electricity.fineAmount)),false));
         return tr;
     }

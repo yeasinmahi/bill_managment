@@ -2,7 +2,6 @@ package com.gits.sami.billmanagement.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,12 +101,13 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
     }
     public Electricity getElectricity() {
         Electricity electricity = new Electricity();
-        electricity.serialNo = serialNoEditText.getText().toString();
-        electricity.meterNo = meterNoEditText.getText().toString();
-        electricity.amount = Double.parseDouble(amountEditText.getText().toString());
-        electricity.billingMonth = Utility.getDate(billingMonthTextView.getText().toString());
-        electricity.paymentDate = Utility.getDate(paymentMonthTextView.getText().toString());
-        electricity.fineAmount = Double.parseDouble(fineAmountTextView.getText().toString());
+
+        electricity.serialNo = serialNoEditText.getText().toString().trim();
+        electricity.meterNo = meterNoEditText.getText().toString().trim();
+        electricity.amount = !amountEditText.getText().toString().trim().equals("") ?Double.parseDouble(amountEditText.getText().toString().trim()):Double.parseDouble("0.0");
+        electricity.billingMonth = Utility.getDate(billingMonthTextView.getText().toString(), Utility.myDateFormat.MMM_yyyy);
+        electricity.paymentDate = Utility.getDate(paymentMonthTextView.getText().toString(), Utility.myDateFormat.dd_MMM_yyyy);
+        electricity.fineAmount = !fineAmountTextView.getText().toString().trim().equals("") ?Double.parseDouble(fineAmountTextView.getText().toString().trim()):Double.parseDouble("0.0");
 
         return electricity;
 

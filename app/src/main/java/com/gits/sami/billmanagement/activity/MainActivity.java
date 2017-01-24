@@ -2,13 +2,9 @@ package com.gits.sami.billmanagement.activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,7 +17,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.gits.sami.billmanagement.R;
-import com.gits.sami.billmanagement.db.DbHelper;
 import com.gits.sami.billmanagement.db.PopulatedOpenHelper;
 import com.gits.sami.billmanagement.fragments.DatePickerFragment;
 import com.gits.sami.billmanagement.fragments.ElectricityFragment;
@@ -34,10 +29,8 @@ import com.gits.sami.billmanagement.others.Utility.isFullDateEnum;
 import com.gits.sami.billmanagement.others.ViewPagerAdapter;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import static com.gits.sami.billmanagement.others.Utility.isFullDateEnum.*;
 
@@ -112,11 +105,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void setDate(final Calendar calender){
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         switch (bill){
-            case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(Utility.getHalfDateAsString(calender.getTime()));
+            case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
                 break;
-            case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getFullDateAsString(calender.getTime()));
+            case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
                 break;
-            case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getHalfDateAsString(calender.getTime()));
+            case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.MMM_yyyy));
                 break;
 
         }

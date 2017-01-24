@@ -10,14 +10,31 @@ import java.util.Date;
  */
 
 public class Utility {
-    public static Date getDate(String date){
-        DateFormat formater = new SimpleDateFormat("dd-MMM-yyyy");
+    private static final Date ErrorDate= new Date(2000,01,01);
+    public enum myDateFormat {
+        dd_MMM_yyyy("dd-MMM-yyyy"),
+        yyyy_MM_dd("yyyy-MM-dd"),
+        MMM_yyyy("MMM-yyyy")
+        ;
+
+        private final String text;
+
+        private myDateFormat(final String text) {
+            this.text = text;
+        }
+        @Override
+        public String toString() {
+            return text;
+        }
+    }
+    public static Date getDate(String date, myDateFormat dateDFormat){
+        DateFormat format = new SimpleDateFormat(dateDFormat.toString());
         try {
-            return formater.parse(date);
+            return format.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new Date(2000,01,01);
+        return ErrorDate;
     }
     public enum dateEnum{
         ElectricityBillingDate,
@@ -28,11 +45,8 @@ public class Utility {
         TRUE,
         FALSE
     }
-    public static String getFullDateAsString(Date date){
-        return new SimpleDateFormat("dd-MMM-yyyy").format(date);
-    }
-    public static String getHalfDateAsString(Date date){
-        return new SimpleDateFormat("MMM-yyyy").format(date);
+    public static String getDateAsString(Date date,Utility.myDateFormat dateFormat){
+        return new SimpleDateFormat(dateFormat.toString()).format(date);
     }
 
 }
