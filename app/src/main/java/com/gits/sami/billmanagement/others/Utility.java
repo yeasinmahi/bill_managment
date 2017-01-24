@@ -53,6 +53,7 @@ public class Utility {
     }
 
     public enum billType{
+        All,
         Electricity,
         Wasa,
         Gas

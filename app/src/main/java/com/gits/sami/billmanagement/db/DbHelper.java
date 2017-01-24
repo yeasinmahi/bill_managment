@@ -10,6 +10,7 @@ import com.gits.sami.billmanagement.model.Bill;
 import com.gits.sami.billmanagement.others.Utility;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.gits.sami.billmanagement.others.Utility.BillTableName;
 import static com.gits.sami.billmanagement.others.Utility.DbName;
@@ -31,11 +32,26 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	public ArrayList<Bill> getAllElectricity() {
+	public ArrayList<Bill> getAllElectricity(Utility.billType billType, Date month) {
 		ArrayList<Bill> bills = new ArrayList<Bill>();
 		// Rest Index Of Spinner from database
 		SQLiteDatabase db = getReadableDatabase();
-		Cursor cursor = db.query(BillTableName, null, null, null, null, null, null);
+		Cursor cursor;
+		if (!billType.equals(Utility.billType.All)){
+			if (!month.equals(Utility.ErrorDate)){
+				cursor = db.query(BillTableName, null, "billType=? and billingMonth=?", new String[]{billType.toString(),Utility.getDateAsString(month, Utility.myDateFormat.yyyy_MM_dd)}, null, null, null);
+			}
+			else {
+				cursor = db.query(BillTableName, null, "billType=? ", new String[]{billType.toString()}, null, null, null);
+			}
+		}else {
+			if (!month.equals(Utility.ErrorDate)){
+				cursor = db.query(BillTableName, null, "billingMonth=?", new String[]{Utility.getDateAsString(month, Utility.myDateFormat.yyyy_MM_dd)}, null, null, null);
+			}else {
+				cursor = db.query(BillTableName, null, null, null, null, null, null);
+			}
+		}
+
 		if (cursor != null && cursor.getCount() > 0) {
 			while (cursor.moveToNext()) {
 				Bill bill = new Bill();
