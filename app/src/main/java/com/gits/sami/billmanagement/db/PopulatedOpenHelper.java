@@ -13,12 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static com.gits.sami.billmanagement.others.Utility.DbName;
+
 public class PopulatedOpenHelper extends SQLiteOpenHelper {
 	private static PopulatedOpenHelper sInstant;
-	private static final String DbName="billManagement.sqlite";
 	private static String DbPath;
 	private SQLiteDatabase database;
 	private Context context;
+
 	private PopulatedOpenHelper(Context context) {
 		super(context, DbName, null, 1);
 		this.context=context;
@@ -90,7 +92,6 @@ public class PopulatedOpenHelper extends SQLiteOpenHelper {
 			return false;
 		}
 	}
-	
 	public void Close(){
 		if(database!=null){
 			database.close();

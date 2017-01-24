@@ -10,7 +10,10 @@ import java.util.Date;
  */
 
 public class Utility {
-    private static final Date ErrorDate= new Date(2000,01,01);
+    public static final Date ErrorDate= new Date(2000,01,01);
+    public static  final String DbName = "billManagement.sqlite";
+    public static  final int DbVersion = 1;
+    public static  final String BillTableName = "bill";
     public enum myDateFormat {
         dd_MMM_yyyy("dd-MMM-yyyy"),
         yyyy_MM_dd("yyyy-MM-dd"),
@@ -47,6 +50,12 @@ public class Utility {
     }
     public static String getDateAsString(Date date,Utility.myDateFormat dateFormat){
         return new SimpleDateFormat(dateFormat.toString()).format(date);
+    }
+
+    public enum billType{
+        Electricity,
+        Wasa,
+        Gas
     }
 
 }

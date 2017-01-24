@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.gits.sami.billmanagement.R;
 import com.gits.sami.billmanagement.db.DbHelper;
-import com.gits.sami.billmanagement.model.Electricity;
+import com.gits.sami.billmanagement.model.Bill;
 import com.gits.sami.billmanagement.others.Utility;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class ReportsFragment extends Fragment {
         dbHelper = new DbHelper(getContext());
         tableLayout = (TableLayout) view.findViewById(R.id.reportTable);
 
-        ArrayList<Electricity> content = dbHelper.getAllElectricity();
+        ArrayList<Bill> content = dbHelper.getAllElectricity();
 
         createReportTable(content);
         return view;
@@ -57,6 +57,7 @@ public class ReportsFragment extends Fragment {
                 TableLayout.LayoutParams.MATCH_PARENT));
         //tr.setPadding(10,10,10,10);
 
+        tr.addView(getTextView("Bill Type",true));
         tr.addView(getTextView("Serial No",true));
         tr.addView(getTextView("Meter No",true));
         tr.addView(getTextView("Amount",true));
@@ -67,27 +68,26 @@ public class ReportsFragment extends Fragment {
         tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
 
     }
-    private void createReportTable(ArrayList<Electricity> content) {
+    private void createReportTable(ArrayList<Bill> content) {
         populateReportTable();
-        for (Electricity electricity : content) {
-            TableRow tr = getARow(electricity);
+        for (Bill bill : content) {
+            TableRow tr = getARow(bill);
             tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
         }
     }
-    private TableRow getARow(Electricity electricity) {
+    private TableRow getARow(Bill bill) {
         TableRow tr = new TableRow(getContext());
         tr.setLayoutParams(new TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.MATCH_PARENT));
         //tr.setPadding(10,10,10,10);
-
-
-        tr.addView(getTextView(electricity.serialNo,false));
-        tr.addView(getTextView(electricity.meterNo,false));
-        tr.addView(getTextView(String.valueOf(electricity.amount),false));
-        tr.addView(getTextView(Utility.getDateAsString(electricity.billingMonth,Utility.myDateFormat.MMM_yyyy),false));
-        tr.addView(getTextView(Utility.getDateAsString(electricity.paymentDate,Utility.myDateFormat.dd_MMM_yyyy),false));
-        tr.addView(getTextView((String.valueOf(electricity.fineAmount)),false));
+        tr.addView(getTextView(bill.billType.toString(),false));
+        tr.addView(getTextView(bill.serialNo,false));
+        tr.addView(getTextView(bill.meterNo,false));
+        tr.addView(getTextView(String.valueOf(bill.amount),false));
+        tr.addView(getTextView(Utility.getDateAsString(bill.billingMonth,Utility.myDateFormat.MMM_yyyy),false));
+        tr.addView(getTextView(Utility.getDateAsString(bill.paymentDate,Utility.myDateFormat.dd_MMM_yyyy),false));
+        tr.addView(getTextView((String.valueOf(bill.fineAmount)),false));
         return tr;
     }
 
