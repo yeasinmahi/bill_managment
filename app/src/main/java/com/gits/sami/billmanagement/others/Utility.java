@@ -45,6 +45,10 @@ public class Utility {
     public enum dateEnum{
         ElectricityBillingDate,
         ElectricityPaymentDate,
+        WasaBillingDate,
+        WasaPaymentDate,
+        GasBillingDate,
+        GasPaymentDate,
         ReportDate
     }
     public enum isFullDateEnum{

@@ -28,7 +28,6 @@ import com.gits.sami.billmanagement.others.Utility.dateEnum;
 import com.gits.sami.billmanagement.others.Utility.isFullDateEnum;
 import com.gits.sami.billmanagement.others.ViewPagerAdapter;
 
-import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -85,10 +84,22 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     isFullDateEnum isFullDateEnum= TRUE;
     public void datePicker(View view){
         switch (view.getId()){
-            case R.id.billingDate: bill = dateEnum.ElectricityBillingDate;
+            case R.id.eBillingDate: bill = dateEnum.ElectricityBillingDate;
                 isFullDateEnum = FALSE;
                 break;
-            case R.id.paymentDate: bill = dateEnum.ElectricityPaymentDate;
+            case R.id.ePaymentDate: bill = dateEnum.ElectricityPaymentDate;
+                isFullDateEnum = TRUE;
+                break;
+            case R.id.wBillingDate: bill = dateEnum.WasaBillingDate;
+                isFullDateEnum = FALSE;
+                break;
+            case R.id.wPaymentDate: bill = dateEnum.WasaPaymentDate;
+                isFullDateEnum = TRUE;
+                break;
+            case R.id.gBillingDate: bill = dateEnum.GasBillingDate;
+                isFullDateEnum = FALSE;
+                break;
+            case R.id.gPaymentDate: bill = dateEnum.GasPaymentDate;
                 isFullDateEnum = TRUE;
                 break;
             case R.id.reportMonth: bill = dateEnum.ReportDate;
@@ -101,9 +112,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private void setDate(final Calendar calender){
         switch (bill){
-            case ElectricityBillingDate: ((EditText) findViewById(R.id.billingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
+            case ElectricityBillingDate: ((EditText) findViewById(R.id.eBillingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
                 break;
-            case ElectricityPaymentDate: ((EditText) findViewById(R.id.paymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
+            case ElectricityPaymentDate: ((EditText) findViewById(R.id.ePaymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
+                break;
+            case WasaBillingDate: ((EditText) findViewById(R.id.wBillingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
+                break;
+            case WasaPaymentDate: ((EditText) findViewById(R.id.wPaymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
+                break;
+            case GasBillingDate: ((EditText) findViewById(R.id.gBillingMonthEditText)).setText(Utility.getDateAsString(calender.getTime(), Utility.myDateFormat.MMM_yyyy));
+                break;
+            case GasPaymentDate: ((EditText) findViewById(R.id.gPaymentDateEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.dd_MMM_yyyy));
                 break;
             case ReportDate: ((EditText) findViewById(R.id.reportMonthEditText)).setText(Utility.getDateAsString(calender.getTime(),Utility.myDateFormat.MMM_yyyy));
 

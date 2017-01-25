@@ -49,14 +49,14 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
 
     private void Init(View rootView) {
         dbHelper = new DbHelper(rootView.getContext());
-        serialNoEditText = (EditText) rootView.findViewById(R.id.serialNoEditText);
-        meterNoEditText = (EditText) rootView.findViewById(R.id.meterNoEditText);
-        amountEditText = (EditText) rootView.findViewById(R.id.amountEditText);
-        billingMonthTextView = (EditText) rootView.findViewById(R.id.billingMonthEditText);
-        paymentMonthTextView = (EditText) rootView.findViewById(R.id.paymentDateEditText);
-        fineAmountTextView = (EditText) rootView.findViewById(R.id.fineAmountEditText);
-        eIsLateSpinner = (Spinner) rootView.findViewById(R.id.isLate);
-        saveButton = (Button) rootView.findViewById(R.id.saveButton);
+        serialNoEditText = (EditText) rootView.findViewById(R.id.eSerialNoEditText);
+        meterNoEditText = (EditText) rootView.findViewById(R.id.eMeterNoEditText);
+        amountEditText = (EditText) rootView.findViewById(R.id.eAmountEditText);
+        billingMonthTextView = (EditText) rootView.findViewById(R.id.eBillingMonthEditText);
+        paymentMonthTextView = (EditText) rootView.findViewById(R.id.ePaymentDateEditText);
+        fineAmountTextView = (EditText) rootView.findViewById(R.id.eFineAmountEditText);
+        eIsLateSpinner = (Spinner) rootView.findViewById(R.id.eIsLate);
+        saveButton = (Button) rootView.findViewById(R.id.eSaveButton);
         saveButton.setOnClickListener(this);
 
     }
