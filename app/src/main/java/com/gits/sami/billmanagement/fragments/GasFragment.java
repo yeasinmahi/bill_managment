@@ -101,7 +101,7 @@ public class GasFragment extends Fragment implements AdapterView.OnItemSelectedL
 
     }
 
-    private boolean validateElectricity() {
+    private boolean validateBill() {
 
         if (isEmpty(serialNoEditText)) {
             Toast.makeText(getContext(), "Serial no cannot be blank", Toast.LENGTH_LONG).show();
@@ -149,8 +149,8 @@ public class GasFragment extends Fragment implements AdapterView.OnItemSelectedL
         return true;
     }
 
-    private Bill getElectricity() {
-        if (validateElectricity()) {
+    private Bill getBill() {
+        if (validateBill()) {
             Bill bill = new Bill();
             bill.billType = Utility.billType.Gas;
             bill.serialNo = getMyText(serialNoEditText);
@@ -167,7 +167,7 @@ public class GasFragment extends Fragment implements AdapterView.OnItemSelectedL
 
     @Override
     public void onClick(View v) {
-        Bill bill = getElectricity();
+        Bill bill = getBill();
         if (bill != null) {
             if (dbHelper.insertElectricity(bill)) {
                 Toast.makeText(v.getContext(), "Insertion Successful", Toast.LENGTH_SHORT).show();

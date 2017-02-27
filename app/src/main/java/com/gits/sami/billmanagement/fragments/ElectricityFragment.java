@@ -16,7 +16,6 @@ import com.gits.sami.billmanagement.R;
 import com.gits.sami.billmanagement.db.DbHelper;
 import com.gits.sami.billmanagement.model.Bill;
 import com.gits.sami.billmanagement.others.Utility;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +67,7 @@ public class ElectricityFragment extends Fragment implements AdapterView.OnItemS
         View rootView = inflater.inflate(R.layout.fragment_electicity, container, false);
         Init(rootView);
         populateSpinner();
+
 
         return rootView;
     }
