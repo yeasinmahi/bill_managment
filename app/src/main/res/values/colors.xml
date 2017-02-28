@@ -8,4 +8,5 @@
     <color name="colorAccent">#c8e8ff</color>
     <color name="headerBackground">#eee</color>
     <color name="lightGrey">#8C8A8C</color>
+    <color name="myColor">#ff0083</color>
 </resources>

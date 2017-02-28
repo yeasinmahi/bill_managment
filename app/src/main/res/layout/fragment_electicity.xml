@@ -65,44 +65,64 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <AutoCompleteTextView
-                    android:id="@+id/eBillingMonthEditText"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Billing Month"
-                    android:maxLines="1" />
+                    android:layout_weight="4">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/eBillingMonthEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Billing Month"
+                        android:maxLines="1" />
+
+                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/eBillingDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:onClick="datePicker"
                     android:tag="eBill"
-                    android:text="Pick Date" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:background="@android:drawable/ic_menu_my_calendar" />
+            </LinearLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/ePaymentDateEditText"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Payment Date"
-                    android:maxLines="1" />
+                    android:layout_weight="4">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/ePaymentDateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Payment Date"
+                        android:maxLines="1" />
+
+
+                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/ePaymentDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="datePicker"
+                    android:layout_weight="2"
                     android:tag="ePay"
-                    android:text="Pick Date" />
-            </android.support.design.widget.TextInputLayout>
+                    android:background="@android:drawable/ic_menu_my_calendar"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,6 +143,7 @@
                     android:prompt="@string/late"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -133,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Fine Amount"
                     android:maxLines="1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </android.support.design.widget.TextInputLayout>
 
