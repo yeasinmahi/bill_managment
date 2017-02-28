@@ -71,4 +71,7 @@ public class Utility {
     public static String getMyText(EditText editText){
         return editText.getText().toString().trim();
     }
+    public static String getErrorMsg(){
+        return "This field is required";
+    }
 }

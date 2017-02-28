@@ -104,45 +104,45 @@ public class WasaFragment extends Fragment implements AdapterView.OnItemSelected
     private boolean validateElectricity() {
 
         if (isEmpty(serialNoEditText)) {
-            Toast.makeText(getContext(), "Serial no cannot be blank", Toast.LENGTH_LONG).show();
+            serialNoEditText.setError(Utility.getErrorMsg());
             return false;
         }
         if (isEmpty(meterNoEditText)) {
-            Toast.makeText(getContext(), "Meter no cannot be blank", Toast.LENGTH_LONG).show();
+            meterNoEditText.setError(Utility.getErrorMsg());
             return false;
         }
         if (isEmpty(amountEditText)) {
-            Toast.makeText(getContext(), "Amount cannot be blank", Toast.LENGTH_LONG).show();
+            amountEditText.setError(Utility.getErrorMsg());
             return false;
         } else {
             try {
                 Double.parseDouble(getMyText(amountEditText));
             } catch (Exception e) {
-                Toast.makeText(getContext(), "Check amount properly", Toast.LENGTH_LONG).show();
+                amountEditText.setError("Check amount properly");
                 return false;
             }
         }
         if (isEmpty(billingMonthTextView)) {
-            Toast.makeText(getContext(), "Billing month cannot be blank", Toast.LENGTH_LONG).show();
+            billingMonthTextView.setError(Utility.getErrorMsg());
             return false;
         }
         if (getDate(getMyText(billingMonthTextView), Utility.myDateFormat.MMM_yyyy).equals(Utility.ErrorDate)) {
-            Toast.makeText(getContext(), "Billing Date format error", Toast.LENGTH_LONG).show();
+            billingMonthTextView.setError("Billing date format error");
             return false;
         }
         if (isEmpty(paymentMonthTextView)) {
-            Toast.makeText(getContext(), "Payment date cannot be blank", Toast.LENGTH_LONG).show();
+            paymentMonthTextView.setError(Utility.getErrorMsg());
             return false;
         }
         if (getDate(getMyText(paymentMonthTextView), Utility.myDateFormat.dd_MMM_yyyy).equals(Utility.ErrorDate)) {
-            Toast.makeText(getContext(), "Payment Date format error", Toast.LENGTH_LONG).show();
+            paymentMonthTextView.setError("Payment date format error");
             return false;
         }
         if (!isEmpty(fineAmountTextView)) {
             try {
                 Double.parseDouble(getMyText(fineAmountTextView));
             } catch (Exception ex) {
-                Toast.makeText(getContext(), "Check fine amount properly", Toast.LENGTH_LONG).show();
+                fineAmountTextView.setError("Check fine amount properly");
                 return false;
             }
         }
