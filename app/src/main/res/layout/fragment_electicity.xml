@@ -7,9 +7,9 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@color/headerBackground"
         android:gravity="center_horizontal"
         android:padding="15dp"
-        android:background="@color/headerBackground"
         android:text="Electricity"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -23,101 +23,131 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:padding="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="30dp">
 
-            <EditText
-                android:id="@+id/eSerialNoEditText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Serial No" />
-            <EditText
-                android:id="@+id/eMeterNoEditText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Meter No" />
-            <EditText
-                android:id="@+id/eAmountEditText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Amount" />
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <EditText
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/eSerialNoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Serial No"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/eMeterNoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Meter No"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/eAmountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
                     android:id="@+id/eBillingMonthEditText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Billing Month"
-                    android:layout_weight="2"
-                    />
+                    android:maxLines="1" />
+
                 <Button
                     android:id="@+id/eBillingDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
-                    android:tag="eBill"
                     android:onClick="datePicker"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-            <LinearLayout
+                    android:tag="eBill"
+                    android:text="Pick Date" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <EditText
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
                     android:id="@+id/ePaymentDateEditText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Payment Date"
-                    android:layout_weight="2"
-                    />
+                    android:maxLines="1" />
+
                 <Button
+                    android:id="@+id/ePaymentDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
-                    android:tag="ePay"
-                    android:id="@+id/ePaymentDate"
                     android:onClick="datePicker"
-                    android:layout_weight="1"/>
-            </LinearLayout>
+                    android:tag="ePay"
+                    android:text="Pick Date" />
+            </android.support.design.widget.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Is late payment"
                     android:layout_weight="2"
-                    />
+                    android:text="Is late payment" />
+
                 <Spinner
                     android:id="@+id/eIsLate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:prompt="@string/late"
                     android:layout_weight="2"
-                    android:spinnerMode="dropdown"/>
+                    android:prompt="@string/late"
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <AutoCompleteTextView
+                    android:id="@+id/eFineAmountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fine Amount"
+                    android:maxLines="1"
+                    android:visibility="gone"/>
 
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/eFineAmountEditText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Fine Amount"
-                android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="50dp"
-                android:paddingBottom="50dp">
+                android:paddingBottom="50dp"
+                android:paddingTop="50dp">
+
                 <Button
                     android:id="@+id/eSaveButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Save"/>
+                    android:text="Save" />
             </LinearLayout>
         </LinearLayout>
 
