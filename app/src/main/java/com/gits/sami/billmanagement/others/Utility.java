@@ -13,8 +13,15 @@ import java.util.Date;
  */
 
 public class Utility {
-    public static final Date ErrorDate= new Date(2000,01,01);
-    public static  final String DbName = "billManagement.sqlite";
+    public static Date ErrorDate = new Date();
+    static {
+        try {
+            ErrorDate = (new SimpleDateFormat(myDateFormat.yyyy_MM_dd.toString())).parse("2000-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+    public static  final String DbName = "billManagement.sql";
     public static  final int DbVersion = 1;
     public static  final String BillTableName = "bill";
     public enum myDateFormat {

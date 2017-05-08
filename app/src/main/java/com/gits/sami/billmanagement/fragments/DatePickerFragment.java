@@ -1,5 +1,6 @@
 package com.gits.sami.billmanagement.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.res.Resources;
@@ -22,6 +23,7 @@ public class DatePickerFragment extends DialogFragment{
     public DatePickerFragment(){
 
     }
+    @SuppressLint("ValidFragment")
     public DatePickerFragment(isFullDateEnum isFullDate){
         this.isFullDate=isFullDate;
     }
